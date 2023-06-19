@@ -325,10 +325,10 @@ mod tests {
 
     #[test]
     fn test_parallel() {
-        let filename = "data/15_cities.txt";
+        let filename = "data/17_cities.txt";
 
         let array = parse_file(filename).unwrap();
-        let best = parallel_tsp_bb(array, 2).unwrap();
+        let best = parallel_tsp_bb(array, 4).unwrap();
         let cost = best.cost;
         let cities: Vec<usize> = best.cities.iter().map(|x| x+1).collect();
         println!("{cost}");
@@ -348,7 +348,7 @@ mod tests {
         println!("serial - {duration}");
 
         let now = Instant::now();
-        parallel_tsp_bb(array, 2);
+        parallel_tsp_bb(array, 4);
         let duration = now.elapsed().as_secs();
         println!("parallel - {duration}");
     }
