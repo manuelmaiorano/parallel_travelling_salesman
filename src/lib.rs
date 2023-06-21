@@ -338,7 +338,7 @@ mod tests {
 
     #[test]
     fn test_compare() {
-        let filename = "data/15_cities.txt";
+        let filename = "data/17_cities.txt";
 
         let array = parse_file(filename).unwrap();
 
