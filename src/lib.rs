@@ -342,14 +342,11 @@ mod tests {
 
         let array = parse_file(filename).unwrap();
 
-        let now = Instant::now();
-        serial_tsp_bb(&array);
-        let duration = now.elapsed().as_secs();
-        println!("serial - {duration}");
-
-        let now = Instant::now();
-        parallel_tsp_bb(array, 4);
-        let duration = now.elapsed().as_secs();
-        println!("parallel - {duration}");
+        for i in vec![2, 4, 8, 16] {
+            let now = Instant::now();
+            parallel_tsp_bb(array.clone(), i);
+            let duration = now.elapsed().as_secs();
+            println!("parallel {i} - {duration}");
+        }
     }
 }
